@@ -33,11 +33,15 @@ public class Main {
         ArrayList<String> strings = new ArrayList<>();
         ArrayList<Integer> totals = new ArrayList<>();
 
-        String s = scr.nextLine();
+
         int t = 0;
         int g = 0;
+        int g2 = 0;
+        int g3 = 0;
 
         while(scr.hasNextLine()){
+
+            String s = scr.nextLine();
 
             if(!s.isEmpty()) {
                 System.out.println("Found empty line.");
@@ -48,7 +52,9 @@ public class Main {
                 }
 
                 totals.add(t);
+
                 System.out.println("New elf added to line, total was" + t);
+
                 t = 0;
 
                 strings.clear();
@@ -68,7 +74,34 @@ public class Main {
 
         }
 
+        totals.remove(totals.indexOf(g));
+
+        for (int i = 0; i < totals.size(); i++) {
+
+            if(totals.get(i) > g2){
+
+                g2 = totals.get(i);
+
+            }
+
+        }
+
+        totals.remove(totals.indexOf(g2));
+
+        for (int i = 0; i < totals.size(); i++) {
+
+            if(totals.get(i) > g3){
+
+                g3 = totals.get(i);
+
+            }
+
+        }
+
+        int topThree = g + g2 + g3;
+
         System.out.println("The greatest amount of calories that one elf had is: " + g);
+        System.out.println("The greatest amount of the top three calorie carrying elves is: " + topThree);
 
 
     }
