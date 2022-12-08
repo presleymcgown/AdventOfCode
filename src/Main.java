@@ -8,8 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        dayFive();
-
+        daySix();
 
     }
 
@@ -110,6 +109,202 @@ public class Main {
 
         System.out.println("The greatest amount of calories that one elf had is: " + g);
         System.out.println("The greatest amount of the top three calorie carrying elves is: " + topThree);
+    }
+
+    public static void dayTwo(){
+
+        String path = "res/rockpaperscissors.txt";
+        File file = new File(path);
+
+        Scanner scr;
+
+        try {
+            scr = new Scanner(file);
+        } catch (FileNotFoundException e) {
+
+            throw new RuntimeException(e);
+
+        }
+
+
+        /*
+
+        POINTS SYSTEM:
+
+        A X ROCK: 1
+        B Y PAPER: 2
+        C Z SCISSORS: 3
+
+        DRAW: 3
+        WIN: 6
+        LOSS: 0
+
+        A/X BEATS C/Z
+        C/Z BEATS B/Y
+        B/Y BEATS A/X
+
+        X LOSE
+        Y DRAW
+        Z WIN
+
+         */
+
+        String s = scr.nextLine();
+        char elfMove;
+        char yourMove;
+        int points = 0;
+        int points2 = 0;
+
+        while(scr.hasNextLine()){
+
+            // chars for strategy guide are at indexes 0 and 2
+
+            elfMove = s.charAt(0);
+            yourMove = s.charAt(2);
+
+            System.out.println(elfMove + " " + yourMove);
+
+
+            //rock
+            if(yourMove == 'X'){
+
+                points += 1;
+
+                if(elfMove == 'A'){
+
+                    points += 3;
+
+                }else if(elfMove == 'B'){
+
+                    points += 0;
+
+                }else if(elfMove == 'C'){
+
+                    points += 6;
+
+                }
+
+            }else if(yourMove == 'Y'){
+
+                //paper
+
+                points += 2;
+
+                if(elfMove == 'A'){
+
+                    points += 6;
+
+                }else if(elfMove == 'B'){
+
+                    points += 3;
+
+                }else if(elfMove == 'C'){
+
+                    points += 0;
+
+                }
+
+            }else if(yourMove == 'Z'){
+
+                //scissors
+
+                points += 3;
+
+                if(elfMove == 'A'){
+
+                    points += 0;
+
+                }else if(elfMove == 'B'){
+
+                    points += 6;
+
+                }else if(elfMove == 'C'){
+
+                    points += 3;
+
+                }
+
+            }
+
+            if(yourMove == 'X'){
+
+                //lose
+
+                if(elfMove == 'A'){
+
+                    points2 += 0;
+                    points2 += 3;
+
+                }else if(elfMove == 'B'){
+
+                    points2 += 0;
+                    points2 += 1;
+
+                }else if(elfMove == 'C'){
+
+                    points2 += 0;
+                    points2 += 2;
+
+                }
+
+            }else if(yourMove == 'Y'){
+
+                //draw
+
+                if(elfMove == 'A'){
+
+                    points2 += 3;
+                    points2 += 1;
+
+                }else if(elfMove == 'B'){
+
+                    points2 += 3;
+                    points2 += 2;
+
+                }else if(elfMove == 'C'){
+
+                    points2 += 3;
+                    points2 += 3;
+
+                }
+
+            }else if(yourMove == 'Z'){
+
+                //win
+
+                if(elfMove == 'A'){
+
+                    points2 += 6;
+                    points2 += 2;
+
+                }else if(elfMove == 'B'){
+
+                    points2 += 6;
+                    points2 += 3;
+
+                }else if(elfMove == 'C'){
+
+                    points2 += 6;
+                    points2 += 1;
+
+                }
+
+            }
+
+            s = scr.nextLine();
+
+        }
+
+        System.out.println(points);
+        System.out.println(points2);
+
+
+    }
+
+    public static void dayThree(){
+
+
+
     }
 
     public static void dayFive(){
@@ -325,6 +520,12 @@ public class Main {
         }
 
 
+
+    }
+
+    public static void daySix(){
+
+        
 
     }
 
