@@ -1,4 +1,3 @@
-import javax.swing.plaf.IconUIResource;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -131,6 +130,7 @@ public class Main {
         // initialize all stacks
 
         Stack[] stacks = new Stack[9];
+        Stack[] fnlStacks = new Stack[9];
 
         for (int i = 0; i < stacks.length; i++) {
 
@@ -158,64 +158,33 @@ public class Main {
 
                     System.out.println("Letter found: " + s.charAt(i));
 
-                    int charNum = i;
-
-                    switch (charNum){
-
-                        case 2:
-
-                            stacks[0].push(s.charAt(i));
-                            System.out.println(s.charAt(i) + " put on stack 1.");
-                            break;
-
-                        case 6:
-
-                            stacks[1].push(s.charAt(i));
-                            System.out.println(s.charAt(i) + " put on stack 2.");
-                            break;
-
-                        case 10:
-
-                            stacks[2].push(s.charAt(i));
-                            System.out.println(s.charAt(i) + " put on stack 3.");
-                            break;
-
-                        case 14:
-
-                            stacks[3].push(s.charAt(i));
-                            System.out.println(s.charAt(i) + " put on stack 4.");
-                            break;
-
-                        case 18:
-
-                            stacks[4].push(s.charAt(i));
-                            System.out.println(s.charAt(i) + " put on stack 5.");
-                            break;
-
-                        case 22:
-
-                            stacks[5].push(s.charAt(i));
-                            System.out.println(s.charAt(i) + " put on stack 6.");
-                            break;
-
-                        case 26:
-
-                            stacks[6].push(s.charAt(i));
-                            System.out.println(s.charAt(i) + " put on stack 7.");
-                            break;
-
-                        case 30:
-
-                            stacks[7].push(s.charAt(i));
-                            System.out.println(s.charAt(i) + " put on stack 8");
-                            break;
-
-                        case 34:
-
-                            stacks[8].push(s.charAt(i));
-                            System.out.println(s.charAt(i) + " put on stack 9.");
-                            break;
-
+                    if(i == 1){
+                        stacks[0].push(s.charAt(i));
+                        System.out.println(s.charAt(i) + " put on stack 1.");
+                    }else if(i == 5){
+                        stacks[1].push(s.charAt(i));
+                        System.out.println(s.charAt(i) + " put on stack 2.");
+                    }else if(i == 9) {
+                        stacks[2].push(s.charAt(i));
+                        System.out.println(s.charAt(i) + " put on stack 3.");
+                    }else if(i == 13) {
+                        stacks[3].push(s.charAt(i));
+                        System.out.println(s.charAt(i) + " put on stack 4.");
+                    }else if(i == 17) {
+                        stacks[4].push(s.charAt(i));
+                        System.out.println(s.charAt(i) + " put on stack 5.");
+                    }else if(i == 21) {
+                        stacks[5].push(s.charAt(i));
+                        System.out.println(s.charAt(i) + " put on stack 6.");
+                    }else if(i == 25){
+                        stacks[6].push(s.charAt(i));
+                        System.out.println(s.charAt(i) + " put on stack 7.");
+                    }else if(i == 29){
+                        stacks[7].push(s.charAt(i));
+                        System.out.println(s.charAt(i) + " put on stack 8");
+                    }else if(i == 33){
+                        stacks[8].push(s.charAt(i));
+                        System.out.println(s.charAt(i) + " put on stack 9.");
                     }
 
                 }
@@ -227,18 +196,121 @@ public class Main {
         }
 
 
-
-
         // perform the line of input
 
         // output the top of each stack
 
+        System.out.println(" ");
+        System.out.println("Reversing...");
+        System.out.println(" ");
 
+        fnlStacks[0] = reverseStack(stacks[0]);
+        fnlStacks[1] = reverseStack(stacks[1]);
+        fnlStacks[2] = reverseStack(stacks[2]);
+        fnlStacks[3] = reverseStack(stacks[3]);
+        fnlStacks[4] = reverseStack(stacks[4]);
+        fnlStacks[5] = reverseStack(stacks[5]);
+        fnlStacks[6] = reverseStack(stacks[6]);
+        fnlStacks[7] = reverseStack(stacks[7]);
+        fnlStacks[8] = reverseStack(stacks[8]);
+
+        System.out.println("Stack One: " + fnlStacks[0]);
+        System.out.println("Stack Two: " + fnlStacks[1]);
+        System.out.println("Stack Three: " + fnlStacks[2]);
+        System.out.println("Stack Four: " + fnlStacks[3]);
+        System.out.println("Stack Five: " + fnlStacks[4]);
+        System.out.println("Stack Six: " + fnlStacks[5]);
+        System.out.println("Stack Seven: " + fnlStacks[6]);
+        System.out.println("Stack Eight: " + fnlStacks[7]);
+        System.out.println("Stack Nine: " + fnlStacks[8]);
+        System.out.println(" ");
+
+        s = scr.nextLine();
+        s = scr.nextLine();
+
+        int change = 0;
+        int extraChange = 0;
+        int ogStack = 0;
+        int endStack = 0;
+
+        while(scr.hasNextLine()){
+
+            s = scr.nextLine();
+
+            for (int i = 0; i < s.length(); i++) {
+
+                if(s.charAt(i) == '1' || s.charAt(i) == '2' || s.charAt(i) == '3' || s.charAt(i) == '4' || s.charAt(i) == '5' || s.charAt(i) == '6' || s.charAt(i) == '7' || s.charAt(i) == '8' || s.charAt(i) == '9' || s.charAt(i) == '0'){
+
+                    // IF THE NUMBER HAS AN E IN FRONT IT IS THE CHANGE, M IT IS THE START STACK, AND O IT IS THE END STACK
+                    if(s.charAt(i-2) == 'e'){
+
+                        if(s.charAt(i+1) == '1'|| s.charAt(i+1) == '2' || s.charAt(i+1) == '3' || s.charAt(i+1) == '4' || s.charAt(i+1) == '5' || s.charAt(i+1) == '6' || s.charAt(i+1) == '7' || s.charAt(i+1) == '8' || s.charAt(i+1) == '9' || s.charAt(i+1) == '0'){
+
+                            String num = s.charAt(i) + s.charAt(i+1) + "";
+                            change = Integer.parseInt((new String(num)));
+
+                            System.out.println(s.charAt(i));
+                            System.out.println(s.charAt(i+1));
+
+                            System.out.println(change);
+
+
+
+                        }else{
+
+                            String num = s.charAt(i) + "";
+
+                            change = Integer.parseInt((new String(num)));
+
+                        }
+
+                    }else if(s.charAt(i-2) == 'm'){
+
+                        String num = s.charAt(i) + "";
+
+                        ogStack = Integer.parseInt((new String(num)));
+
+                        ogStack -= 1;
+
+                    }else if(s.charAt(i-2) == 'o'){
+
+                        String num = s.charAt(i) + "";
+
+                        endStack = Integer.parseInt((new String(num)));
+
+                        endStack -= 1;
+
+                    }
+
+                }
+
+            }
+
+
+                for (int i = 0; i < change; i++) {
+
+                    System.out.println("Moving " + (change) + " items from stack " + (ogStack + 1) + " to stack " + (endStack + 1));
+
+                    fnlStacks[endStack].push(fnlStacks[ogStack].pop());
+
+                    System.out.println("End Stack: " + fnlStacks[endStack]);
+                    System.out.println("Start Stack: " + fnlStacks[ogStack]);
+                    System.out.println(" ");
+
+
+                }
+            }
+
+            change = 0;
+            ogStack = 0;
+            endStack = 0;
+
+        }
 
 
     }
 
-    public static Stack revereStack(Stack in){
+    public static Stack reverseStack(Stack in){
 
         Stack out = new Stack<>();
 
