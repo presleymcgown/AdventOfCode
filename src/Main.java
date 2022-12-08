@@ -229,7 +229,6 @@ public class Main {
         s = scr.nextLine();
 
         int change = 0;
-        int extraChange = 0;
         int ogStack = 0;
         int endStack = 0;
 
@@ -246,8 +245,12 @@ public class Main {
 
                         if(s.charAt(i+1) == '1'|| s.charAt(i+1) == '2' || s.charAt(i+1) == '3' || s.charAt(i+1) == '4' || s.charAt(i+1) == '5' || s.charAt(i+1) == '6' || s.charAt(i+1) == '7' || s.charAt(i+1) == '8' || s.charAt(i+1) == '9' || s.charAt(i+1) == '0'){
 
-                            String num = s.charAt(i) + s.charAt(i+1) + "";
-                            change = Integer.parseInt((new String(num)));
+                            String num = s.charAt(i) + "";
+                            String exNum = s.charAt(i+1) + "";
+                            int first = Integer.parseInt((new String(num)));
+                            int second = Integer.parseInt((new String(exNum)));
+
+                            change = (first * 10) + second;
 
                             System.out.println(s.charAt(i));
                             System.out.println(s.charAt(i+1));
@@ -286,7 +289,6 @@ public class Main {
 
             }
 
-
                 for (int i = 0; i < change; i++) {
 
                     System.out.println("Moving " + (change) + " items from stack " + (ogStack + 1) + " to stack " + (endStack + 1));
@@ -299,13 +301,29 @@ public class Main {
 
 
                 }
-            }
+
 
             change = 0;
             ogStack = 0;
             endStack = 0;
 
         }
+
+        System.out.println("Stack One: " + fnlStacks[0]);
+        System.out.println("Stack Two: " + fnlStacks[1]);
+        System.out.println("Stack Three: " + fnlStacks[2]);
+        System.out.println("Stack Four: " + fnlStacks[3]);
+        System.out.println("Stack Five: " + fnlStacks[4]);
+        System.out.println("Stack Six: " + fnlStacks[5]);
+        System.out.println("Stack Seven: " + fnlStacks[6]);
+        System.out.println("Stack Eight: " + fnlStacks[7]);
+        System.out.println("Stack Nine: " + fnlStacks[8]);
+        System.out.println(" ");
+
+        for (int i = 0; i < 9; i++) {
+            System.out.println(fnlStacks[i].peek());
+        }
+
 
 
     }
