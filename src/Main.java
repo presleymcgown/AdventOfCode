@@ -525,7 +525,55 @@ public class Main {
 
     public static void daySix(){
 
-        
+        String path = "res/radiosignal.txt";
+        File file = new File(path);
+
+        Scanner scr;
+
+        try {
+            scr = new Scanner(file);
+        } catch (FileNotFoundException e) {
+
+            throw new RuntimeException(e);
+
+        }
+
+        String s = scr.nextLine();
+
+        String check = "";
+        int charNum = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+
+            check = check + s.charAt(i);
+
+            if (check.length() > 4) {
+
+                check = "" + check.charAt(1) + check.charAt(2) + check.charAt(3) + check.charAt(4);
+
+                System.out.println(check);
+
+                System.out.println("More than four, changing...");
+
+            }
+
+            if (check.contains(s.charAt(i) + "")) {
+
+                System.out.println("Char already in sequence of four found, adding to list...");
+
+                charNum += 1;
+
+            }else{
+
+                System.out.println(charNum);
+                break;
+
+            }
+
+
+
+        }
+
 
     }
 
