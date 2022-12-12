@@ -540,32 +540,39 @@ public class Main {
 
         String s = scr.nextLine();
 
-        String check = "";
+        String check = "" + s.charAt(0) + s.charAt(1) + s.charAt(2) + s.charAt(4);
         int charNum = 0;
+        int endPro = 0;
+        char char1 = ' ';
+        char char2 = ' ';
+        char char3 = ' ';
+        char char4 = ' ';
 
         for (int i = 0; i < s.length(); i++) {
 
             check = check + s.charAt(i);
 
-            if (check.length() > 4) {
-
-                check = "" + check.charAt(1) + check.charAt(2) + check.charAt(3) + check.charAt(4);
+            check = "" + check.charAt(1) + check.charAt(2) + check.charAt(3) + check.charAt(4);
 
                 System.out.println(check);
 
-                System.out.println("More than four, changing...");
+                char1 = check.charAt(0);
+            char2 = check.charAt(1);
+            char3 = check.charAt(2);
+            char4 = check.charAt(3);
 
-            }
-
-            if (check.contains(s.charAt(i) + "")) {
+            if (s.charAt(i) == char1|| s.charAt(i) == char2 || s.charAt(i) == char3 || s.charAt(i) == char4) {
 
                 System.out.println("Char already in sequence of four found, adding to list...");
 
                 charNum += 1;
 
+                System.out.println(charNum);
+
             }else{
 
-                System.out.println(charNum);
+                endPro = charNum;
+                System.out.println("ANSWER : " + endPro);
                 break;
 
             }
@@ -573,6 +580,8 @@ public class Main {
 
 
         }
+
+
 
 
     }
